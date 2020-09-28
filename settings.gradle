@@ -1,0 +1,3 @@
+include ':mtextdrawable'
+include ':app'
+rootProject.name = "MaterialTextDrawable"
