@@ -11,6 +11,26 @@ This light-weight library provides drawable with letter/text just like the Gmail
 ------------------
 MaterialTextDrawable requires Android [Jellybean](https://developer.android.com/about/versions/jelly-bean) (API level 16) or higher.
 
+## How to
+---------
+To add this library in your project follow these steps:
+ * **Step 1.** Add the JitPack repository to your root `build.gradle` file.
+    ```gradle
+    allprojects {
+      repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+      }
+    }
+    ```
+
+ * **Step 2.** Add the following dependency to your module `build.gradle` file.
+    ```gradle
+    dependencies {
+      implementation 'com.github.adwardstark:materialtextdrawable-for-android:{latest_version}'
+    }
+    ```
+
 ## Quick usage
 ----------------
 Simple use cases will look something like this:
@@ -79,8 +99,8 @@ Following are the enums provided by the library:
 
 ## Thanks
 ---------
- * AmosKorir for the [AvatarImageGenerator implementation](https://github.com/AmosKorir/AvatarImageGenerator) MaterialTextDrawable's drawable generation is based on.
- * Everyone who has contributed code or will contribute code and report/reported issues!
+ * AmosKorir for the [AvatarImageGenerator implementation](https://github.com/AmosKorir/AvatarImageGenerator) MaterialTextDrawable's foundation is based on.
+ * Everyone who has contributed or will contribute code and report/reported issues!
 
 ## License
 ----------
