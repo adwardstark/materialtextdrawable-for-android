@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.Bitmap.Config.ARGB_8888
+import android.os.Looper
 import android.text.TextPaint
+import android.widget.ImageView
 import java.lang.NullPointerException
 import java.util.*
 
@@ -21,6 +23,7 @@ class MaterialTextDrawable private constructor(builder: Builder) {
         private const val MaterialLight = 900
 
         fun with(context: Context): Builder = Builder().with(context)
+        private fun isOnMainThread(): Boolean = Looper.myLooper() == Looper.getMainLooper()
     }
 
     enum class MaterialShape {
@@ -81,13 +84,27 @@ class MaterialTextDrawable private constructor(builder: Builder) {
             return this
         }
 
-        fun getDrawable(): BitmapDrawable {
+        fun get(): BitmapDrawable {
             if(text == ""){
                 throw NullPointerException("No text provided, " +
                         "call text(<your_text>) before calling this method")
             }
             return MaterialTextDrawable(this).getTextDrawable()
         }
+
+        fun into(view: ImageView) {
+            if(!isOnMainThread()) {
+                throw IllegalArgumentException("You must call this method on the main thread")
+            }
+            // Set text-drawable
+            view.setImageDrawable(get())
+        }
+
+        fun into(view: ImageView, scale: ImageView.ScaleType) {
+            view.scaleType = scale
+            into(view)
+        }
+
     }
 
     private fun getTextDrawable(): BitmapDrawable {

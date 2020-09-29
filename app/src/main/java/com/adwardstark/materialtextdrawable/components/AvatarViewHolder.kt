@@ -16,11 +16,10 @@ class AvatarViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         itemView.apply {
             avatarText.text = username
 
-            val textDrawable = MaterialTextDrawable
-                .with(context)
+            val textDrawable = MaterialTextDrawable.with(context)
                 .text(username)
                 .textSize(140)
-                .getDrawable()
+                .get()
 
             avatarIcon.setImageDrawable(textDrawable)
         }

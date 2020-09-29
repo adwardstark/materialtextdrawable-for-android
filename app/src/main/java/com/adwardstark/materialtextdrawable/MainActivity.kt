@@ -2,6 +2,7 @@ package com.adwardstark.materialtextdrawable
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,22 +29,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-        val textDrawable1 = MaterialTextDrawable
-            .with(this)
+        MaterialTextDrawable.with(this)
             .text("Hello")
             .colorMode(MaterialTextDrawable.MaterialColorMode.DARK)
-            .getDrawable()
+            .into(viewBinder.avatarIcon1)
 
-        viewBinder.avatarIcon1.setImageDrawable(textDrawable1)
-
-        val textDrawable2 = MaterialTextDrawable
-            .with(this)
+        MaterialTextDrawable.with(this)
             .text("Goodbye")
             .colorMode(MaterialTextDrawable.MaterialColorMode.LIGHT)
             .shape(MaterialTextDrawable.MaterialShape.RECTANGLE)
-            .getDrawable()
-
-        viewBinder.avatarIcon2.setImageDrawable(textDrawable2)
+            .into(viewBinder.avatarIcon2, ImageView.ScaleType.CENTER_INSIDE)
 
         viewBinder.avatarRecView.apply {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)

@@ -9,7 +9,7 @@ buildscript {
 
         // SDKs
         build_version = 29
-        backward_version = 21
+        backward_version = 16
 
         // Standard Libraries
         corektx_version = "1.3.1"
